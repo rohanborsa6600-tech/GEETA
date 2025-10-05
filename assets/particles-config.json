@@ -1,0 +1,16 @@
+{
+  "particles": {
+    "number": { "value": 50, "density": { "enable": true, "value_area": 800 } },
+    "color": { "value": "#ffd700" },
+    "shape": { "type": "circle" },
+    "opacity": { "value": 0.5 },
+    "size": { "value": 3, "random": true },
+    "move": { "enable": true, "speed": 2, "direction": "none" }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": { "onhover": { "enable": true, "mode": "repulse" } },
+    "modes": { "repulse": { "distance": 200 } }
+  },
+  "retina_detect": true
+}
