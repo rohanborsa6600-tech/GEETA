@@ -1,48 +1,48 @@
 <!DOCTYPE html>
-<html lang="mr">
+<html lang="mr" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>श्रीमद्भगवद्गीता - श्रीकृष्णार्जुन संवाद</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600&family=Noto+Serif+Devanagari:wght@400;500&display=swap" rel="stylesheet">
+    <title>माझी पुस्तक – Dynamic Web Edition</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@700&family=Noto+Sans+Devanagari:wght@400&display=swap" rel="stylesheet">
 </head>
-<body class="light-theme">
-    <header class="hero" id="hero">
-        <nav class="navbar">
-            <div class="logo">📖 श्रीमद्भगवद्गीता</div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#toc">Table of Contents</a></li>
-                <!-- JS ने chapters add होईल -->
-            </ul>
-            <div class="search-container">
-                <input type="text" id="globalSearch" placeholder="श्लोक शोधा... (उदा. 'कर्मयोग')" aria-label="Global Search">
-                <button id="searchBtn">🔍</button>
-            </div>
-            <button id="themeToggle" aria-label="Toggle Dark Mode">🌙</button>
-            <div class="hamburger" id="hamburger">☰</div>
-        </nav>
+<body>
+    <div id="particles-js"></div>
+    
+    <nav class="toc-menu">
+        <button onclick="toggleTOC()">📖 मजकूर निर्देशिका</button>
+        <ul id="toc-list" class="hidden">
+            <li><a href="index.html">मुखपृष्ठ</a></li>
+            <li><a href="chapters/chapter1.html">अध्याय १: सुरुवात</a></li>
+            <li><a href="chapters/chapter2.html">अध्याय २: रहस्य</a></li>
+            <!-- Add more chapters here -->
+        </ul>
+    </nav>
+    
+    <header class="hero">
         <div class="hero-content">
-            <h1 id="heroTitle">श्रीमद्भगवद्गीता</h1>
-            <p class="author">श्रीकृष्ण (महाभारत)</p>
-            <p class="intro" id="introText">अर्जुन आणि श्रीकृष्ण यांच्यातील अमर संवाद. Dynamic webpage वर वाचा, शोधा आणि explore करा. 🙏</p>
-            <button class="cta-btn" onclick="scrollToTOC()">वाचन सुरू करा</button>
+            <h1 class="title">माझी पुस्तक</h1>
+            <p class="author">लेखक: तुझं नाव</p>
+            <p class="teaser">एक immersive वाचन अनुभव... जणू जादूची जग!</p>
+            <button class="cta-btn" onclick="loadChapter('chapter1')">पहिला अध्याय वाचा ➡️</button>
         </div>
     </header>
-
-    <div class="progress-bar" id="progressBar"></div>
-
-    <section id="toc" class="toc-section">
-        <h2>अध्याय सूची (Table of Contents)</h2>
-        <div class="toc-menu" id="tocMenu">
-            <!-- JS ने populate होईल -->
-        </div>
-    </section>
-
+    
+    <div class="progress-bar"></div>
+    
+    <main class="content">
+        <section class="intro">
+            <h2>परिचय</h2>
+            <p>तुझ्या पुस्तकाचा थोडक्यात आढावा येथे... (docs मधून paste कर).</p>
+        </section>
+    </main>
+    
     <footer>
-        <p>&copy; २०२५ श्रीमद्भगवद्गीता Digital Edition. सर्व हक्क राखीवले. | Powered by xAI Grok</p>
+        <p>&copy; २०२५ तुझं नाव. सर्व हक्क राखीव.</p>
     </footer>
-
-    <script src="script.js"></script>
+    
+    <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </body>
 </html>
