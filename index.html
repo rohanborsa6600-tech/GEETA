@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>तुझं बुक टायटल - लेखकाचे नाव</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="hero">
+        <nav class="navbar">
+            <div class="logo">📖 तुझं बुक</div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#toc">Table of Contents</a></li>
+                <li><a href="chapters/chapter1.html">Chapter 1</a></li>
+                <li><a href="chapters/chapter2.html">Chapter 2</a></li>
+                <!-- Add more chapters here -->
+            </ul>
+            <div class="hamburger" id="hamburger">☰</div>
+        </nav>
+        <div class="hero-content">
+            <h1>तुझं बुक टायटल</h1>
+            <p class="author">लेखक: तुझं नाव</p>
+            <p class="intro">हे बुक dynamic webpage वर welcome! Scroll करून chapters explore कर.</p>
+            <button class="cta-btn" onclick="scrollToTOC()">Start Reading</button>
+        </div>
+    </header>
+
+    <section id="toc" class="toc-section">
+        <h2>Table of Contents</h2>
+        <div class="toc-menu" id="tocMenu">
+            <!-- JS ने populate होईल -->
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; २०२५ तुझं बुक. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
