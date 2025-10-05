@@ -1,140 +1,217 @@
-/* Noto Sans Devanagari फॉन्ट वापरत आहोत (अधिक वाचनीय आणि सुंदर) */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700&display=swap');
-
 :root {
-    --primary-color: #a87c52; /* Muted Gold/Saffron */
-    --secondary-color: #2c1f19; /* Deep Brown/Text */
-    --background-light: #f8f8f8; /* Soft Cream Background */
-    --card-background: #ffffff; /* Pure White Card */
-    --border-color: rgba(168, 124, 82, 0.3); /* Subtle Border */
+    --primary: #1a1a2e;
+    --accent: #ffd700;
+    --glass: rgba(255, 255, 255, 0.1);
+    --text: #f0f0f0;
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
     font-family: 'Noto Sans Devanagari', sans-serif;
-    background-color: var(--background-light);
-    color: var(--secondary-color);
-    margin: 0;
-    padding: 0;
-    /* पार्श्वभूमीसाठी placeholder - वास्तविक चित्र नंतर जोडा */
-    background-image: url('assets/krishna_bg_placeholder.jpg'); /* तुमचे शांत, low opacity चे चित्र */
-    background-size: cover;
-    background-attachment: fixed;
-    background-blend-mode: multiply; /* चित्राला शांत लूक देतो */
+    background: var(--primary);
+    color: var(--text);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
-/* ------------------ Header आणि Title ------------------ */
-.main-header {
-    text-align: center;
-    padding: 60px 20px 40px;
-    background: linear-gradient(180deg, var(--background-light), rgba(248, 248, 248, 0.8));
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.3;
 }
 
-.main-header h1 {
-    font-size: 3.8em;
-    color: var(--secondary-color);
-    margin-bottom: 0.1em;
-    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.05); /* Text subtle depth */
+.toc-menu {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
 }
 
-.main-header h2 {
-    font-size: 1.4em;
-    font-weight: 400;
-    color: var(--primary-color);
-    margin-top: 0;
-    font-style: italic;
-}
-
-.author-name {
-    font-style: normal;
-    color: #666;
-    margin-top: 15px;
-    font-size: 1.1em;
-}
-
-/* ------------------ कार्ड्सची नवीन डिझाइन (Elevated Card) ------------------ */
-.book-card {
-    background: var(--card-background);
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-    padding: 30px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Soft Shadow */
-}
-
-.book-card:hover {
-    transform: translateY(-3px); /* Hover effect: Card lifts up */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), 0 0 5px rgba(168, 124, 82, 0.4); /* Subtle Golden Glow */
-}
-
-/* ------------------ TOC Container आणि Grid ------------------ */
-.toc-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.intro-card {
-    margin-bottom: 40px;
-    text-align: center;
-}
-
-.chapters-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-}
-
-/* ------------------ Chapter Card Style ------------------ */
-.chapter-card {
-    /* chapter-card साठी book-card चा आधार वापरू */
-    text-decoration: none;
-    color: var(--secondary-color);
-    display: block;
-    position: relative;
-    overflow: hidden;
-    padding-bottom: 50px;
-}
-
-.chapter-card h3 {
-    color: var(--primary-color);
-    margin-top: 0;
-    font-size: 1.4em;
-    border-bottom: 2px solid var(--border-color);
-    padding-bottom: 10px;
-}
-
-.chapter-card p {
-    color: #555;
-    line-height: 1.6;
-}
-
-.chapter-number {
-    position: absolute;
-    bottom: 5px;
-    right: 15px;
-    font-size: 3.5em;
-    font-weight: 700;
-    color: rgba(168, 124, 82, 0.15); /* Light golden number */
-    line-height: 1;
-}
-
-/* ------------------ Button Style (Clean & Elegant) ------------------ */
-.read-button {
-    background: var(--primary-color);
-    color: white;
-    padding: 12px 30px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: 700;
-    display: inline-block;
-    border: none;
+.toc-menu button {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    color: var(--accent);
+    padding: 10px 20px;
+    border-radius: 10px;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(168, 124, 82, 0.3);
     transition: all 0.3s ease;
 }
 
-.read-button:hover {
-    background: #c39b6f; /* Slightly darker hover */
-    box-shadow: 0 6px 15px rgba(168, 124, 82, 0.5);
-    transform: scale(1.02);
+.toc-menu button:hover {
+    box-shadow: 0 0 20px var(--accent);
+}
+
+#toc-list {
+    list-style: none;
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+#toc-list.hidden {
+    display: none;
+}
+
+#toc-list li a {
+    display: block;
+    color: var(--text);
+    padding: 8px 12px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+#toc-list li a:hover {
+    color: var(--accent);
+}
+
+.hero {
+    padding: 80px 20px 40px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary), #16213e);
+    min-height: 50vh;
+}
+
+.hero-content {
+    max-width: 800px;
+    width: 100%;
+}
+
+.hero-content .title {
+    font-family: 'Mukta', sans-serif;
+    font-size: 4rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    animation: fadeInDown 1s ease;
+}
+
+.hero-content .author {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    opacity: 0.8;
+}
+
+.hero-content .teaser {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.cta-btn {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 15px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+    box-shadow: 0 0 20px var(--accent);
+    transform: scale(1.05);
+}
+
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: var(--accent);
+    width: 0%;
+    z-index: 1001;
+    transition: width 0.3s ease;
+}
+
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    line-height: 1.8;
+}
+
+.content h2 {
+    font-family: 'Mukta', sans-serif;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.content p {
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+blockquote {
+    background: var(--glass);
+    border-left: 4px solid var(--accent);
+    padding: 1rem;
+    margin: 2rem 0;
+    font-style: italic;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background: var(--glass);
+    margin-top: 50px;
+}
+
+.btn-prev, .btn-next {
+    background: var(--glass);
+    color: var(--accent);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.btn-prev:hover, .btn-next:hover {
+    box-shadow: 0 0 20px var(--accent);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: var(--glass);
+    margin-top: 50px;
+}
+
+@keyframes fadeInDown {
+    from { 
+        opacity: 0; 
+        transform: translateY(-50px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+@media (max-width: 768px) {
+    .hero { padding: 60px 10px 30px; }
+    .hero-content .title { font-size: 2.5rem; }
+    .toc-menu { left: 10px; top: 10px; }
+    .content { padding: 10px; }
+    .navigation { flex-direction: column; gap: 10px; }
 }
