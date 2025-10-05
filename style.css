@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600&family=Noto+Serif+Devanagari:wght@400;500&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -30,15 +32,13 @@ body {
     transition: all 0.3s ease;
 }
 
-body.light-theme { background: var(--bg-primary); }
-body.dark-theme { background: var(--bg-primary); }
-
 .hero {
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-attachment: fixed; /* Parallax effect */
+    background: url('assets/bg.jpg') center/cover; /* Krishna theme image add कर */
+    background-attachment: fixed;
     position: relative;
 }
 
@@ -146,7 +146,7 @@ body.dark-theme { background: var(--bg-primary); }
     font-size: 3rem;
     margin-bottom: 1rem;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    overflow: hidden; /* For typewriter */
+    overflow: hidden;
     border-right: 3px solid #fff;
     white-space: nowrap;
     animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
@@ -210,7 +210,7 @@ body.dark-theme { background: var(--bg-primary); }
     padding: 4rem 2rem;
     background: var(--card-bg);
     backdrop-filter: blur(20px);
-    margin-top: -100px; /* Overlap hero */
+    margin-top: -100px;
 }
 
 .toc-section h2 {
@@ -255,7 +255,7 @@ footer {
     border-top: 1px solid var(--border);
 }
 
-/* Chapter pages */
+/* Chapter Styles */
 .chapter-content {
     max-width: 800px;
     margin: 2rem auto;
@@ -264,6 +264,7 @@ footer {
     backdrop-filter: blur(20px);
     border-radius: 20px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    font-family: 'Noto Serif Devanagari', serif;
 }
 
 .chapter-content h1, h2, h3 {
@@ -276,19 +277,66 @@ footer {
     text-align: justify;
 }
 
-/* Search highlight */
+.shloka {
+    background: rgba(255, 255, 255, 0.1);
+    border-left: 4px solid var(--glow);
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    quotes: "“" "”" "‘" "’";
+}
+
+.shloka::before {
+    content: open-quote;
+    font-size: 2rem;
+    color: var(--glow);
+}
+
+.shloka::after {
+    content: close-quote;
+    font-size: 2rem;
+    color: var(--glow);
+}
+
+.next-btn {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    margin: 2rem auto;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.next-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.audio-container {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.audio-container iframe {
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
 .highlight {
     background: yellow;
     padding: 2px 4px;
     border-radius: 3px;
 }
 
-/* Smooth scroll */
 html {
     scroll-behavior: smooth;
 }
 
-/* Mobile */
 @media (max-width: 768px) {
     .nav-menu {
         display: none;
@@ -318,7 +366,6 @@ html {
     }
 }
 
-/* Particles enhanced */
 @keyframes float {
     0%, 100% { transform: translateY(0px) rotate(0deg); }
     50% { transform: translateY(-20px) rotate(180deg); }
@@ -334,7 +381,6 @@ html {
     opacity: 0.8;
 }
 
-/* Confetti (for fun, JS ने add) */
 .confetti {
     position: fixed;
     width: 10px;
