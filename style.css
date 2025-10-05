@@ -1,71 +1,74 @@
-/* Noto Sans Devanagari फॉन्ट वापरत आहोत (Mukta वापरू शकतो, पण Noto जास्त Universal आहे) */
+/* Noto Sans Devanagari फॉन्ट वापरत आहोत (अधिक वाचनीय आणि सुंदर) */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700&display=swap');
 
 :root {
-    --primary-color: #ffc107; /* Golden Yellow */
-    --secondary-color: #6a1b9a; /* Deep Purple */
-    --background-dark: #121212; /* Dark Background */
-    --glass-background: rgba(255, 255, 255, 0.1); /* Lighter Glass effect */
+    --primary-color: #a87c52; /* Muted Gold/Saffron */
+    --secondary-color: #2c1f19; /* Deep Brown/Text */
+    --background-light: #f8f8f8; /* Soft Cream Background */
+    --card-background: #ffffff; /* Pure White Card */
+    --border-color: rgba(168, 124, 82, 0.3); /* Subtle Border */
 }
 
 body {
     font-family: 'Noto Sans Devanagari', sans-serif;
-    background-color: var(--background-dark);
-    color: #f0f0f0;
+    background-color: var(--background-light);
+    color: var(--secondary-color);
     margin: 0;
     padding: 0;
-    /* Optional: हलक्या golden particles साठी background-image जोडा */
-    background-image: radial-gradient(circle at top left, var(--secondary-color) 0%, transparent 20%), 
-                      radial-gradient(circle at bottom right, rgba(255, 193, 7, 0.1) 0%, transparent 30%);
-    min-height: 100vh;
-}
-
-/* ------------------ लिक्विड ग्लास (Glassmorphism) इफेक्ट ------------------ */
-.glass-blur-card {
-    background: var(--glass-background);
-    backdrop-filter: blur(10px); /* मुख्य Glass Effect */
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    padding: 25px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.glass-blur-card:hover {
-    transform: translateY(-5px); /* Hover effect */
-    box-shadow: 0 12px 40px 0 rgba(255, 193, 7, 0.2), 0 0 15px rgba(255, 193, 7, 0.5); /* Golden Glow on hover */
+    /* पार्श्वभूमीसाठी placeholder - वास्तविक चित्र नंतर जोडा */
+    background-image: url('assets/krishna_bg_placeholder.jpg'); /* तुमचे शांत, low opacity चे चित्र */
+    background-size: cover;
+    background-attachment: fixed;
+    background-blend-mode: multiply; /* चित्राला शांत लूक देतो */
 }
 
 /* ------------------ Header आणि Title ------------------ */
 .main-header {
     text-align: center;
-    padding: 80px 20px 40px;
-    background: linear-gradient(180deg, var(--background-dark), rgba(18, 18, 18, 0.8));
+    padding: 60px 20px 40px;
+    background: linear-gradient(180deg, var(--background-light), rgba(248, 248, 248, 0.8));
 }
 
 .main-header h1 {
-    font-size: 3.5em;
-    color: var(--primary-color);
-    text-shadow: 0 0 10px rgba(255, 193, 7, 0.7); /* Title Glow */
+    font-size: 3.8em;
+    color: var(--secondary-color);
     margin-bottom: 0.1em;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.05); /* Text subtle depth */
 }
 
 .main-header h2 {
-    font-size: 1.2em;
+    font-size: 1.4em;
     font-weight: 400;
-    color: #aaa;
+    color: var(--primary-color);
     margin-top: 0;
+    font-style: italic;
 }
 
 .author-name {
-    font-style: italic;
-    color: #999;
+    font-style: normal;
+    color: #666;
+    margin-top: 15px;
+    font-size: 1.1em;
+}
+
+/* ------------------ कार्ड्सची नवीन डिझाइन (Elevated Card) ------------------ */
+.book-card {
+    background: var(--card-background);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    padding: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Soft Shadow */
+}
+
+.book-card:hover {
+    transform: translateY(-3px); /* Hover effect: Card lifts up */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), 0 0 5px rgba(168, 124, 82, 0.4); /* Subtle Golden Glow */
 }
 
 /* ------------------ TOC Container आणि Grid ------------------ */
 .toc-container {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -77,57 +80,61 @@ body {
 
 .chapters-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
 }
 
 /* ------------------ Chapter Card Style ------------------ */
 .chapter-card {
+    /* chapter-card साठी book-card चा आधार वापरू */
     text-decoration: none;
+    color: var(--secondary-color);
     display: block;
     position: relative;
     overflow: hidden;
-    padding-bottom: 50px; /* Space for chapter number */
+    padding-bottom: 50px;
 }
 
 .chapter-card h3 {
     color: var(--primary-color);
     margin-top: 0;
-    font-size: 1.5em;
+    font-size: 1.4em;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
 }
 
 .chapter-card p {
-    color: #ccc;
+    color: #555;
     line-height: 1.6;
 }
 
 .chapter-number {
     position: absolute;
-    bottom: 0;
+    bottom: 5px;
     right: 15px;
-    font-size: 3em;
+    font-size: 3.5em;
     font-weight: 700;
-    color: rgba(255, 255, 255, 0.1); /* Very light, submerged number */
+    color: rgba(168, 124, 82, 0.15); /* Light golden number */
     line-height: 1;
 }
 
-/* ------------------ Glow Button Effect ------------------ */
+/* ------------------ Button Style (Clean & Elegant) ------------------ */
 .read-button {
     background: var(--primary-color);
-    color: var(--background-dark);
-    padding: 12px 25px;
-    border-radius: 50px;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 5px;
     text-decoration: none;
     font-weight: 700;
     display: inline-block;
     border: none;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(255, 193, 7, 0.5);
+    box-shadow: 0 4px 10px rgba(168, 124, 82, 0.3);
     transition: all 0.3s ease;
 }
 
 .read-button:hover {
-    background: #ffd740;
-    box-shadow: 0 8px 25px rgba(255, 193, 7, 0.7);
-    transform: scale(1.05);
+    background: #c39b6f; /* Slightly darker hover */
+    box-shadow: 0 6px 15px rgba(168, 124, 82, 0.5);
+    transform: scale(1.02);
 }
