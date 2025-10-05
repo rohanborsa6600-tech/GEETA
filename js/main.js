@@ -1,17 +1,90 @@
 // TOC Toggle
 function toggleTOC() {
     const tocList = document.getElementById('toc-list');
-    tocList.classList.toggle('hidden');
+    if (tocList) tocList.classList.toggle('hidden');
 }
 
-// Load Particles Config
-if (document.getElementById('particles-js')) {
-    particlesJS.load('particles-js', 'assets/particles-config.json', function() {
-        console.log('Particles loaded!');
-    });
+// Auto Style Simple Chapters
+document.addEventListener('DOMContentLoaded', () => {
+    if (!document.querySelector('.hero') && document.querySelector('main')) {
+        autoStyleSimpleChapter();
+    }
+    const teaser = document.querySelector('.teaser');
+    if (teaser) {
+        typeWriter(teaser, teaser.textContent);
+    }
+});
+
+function autoStyleSimpleChapter() {
+    const main = document.querySelector('main');
+    if (!main) return;
+
+    const body = document.body;
+    const particles = document.createElement('div');
+    particles.id = 'particles-js';
+    body.insertBefore(particles, body.firstChild);
+
+    const nav = document.createElement('nav');
+    nav.className = 'toc-menu';
+    nav.innerHTML = `
+        <button onclick="toggleTOC()">📖 मजकूर निर्देशिका</button>
+        <ul id="toc-list" class="hidden">
+            <li><a href="../index.html">मुखपृष्ठ</a></li>
+            <li><a href="simple-chapter.html">साधा अध्याय</a></li>
+        </ul>
+    `;
+    body.insertBefore(nav, main);
+
+    const hero = document.createElement('header');
+    hero.className = 'hero';
+    hero.innerHTML = `
+        <div class="hero-content">
+            <h1 class="title">साधा अध्याय</h1>
+            <p class="author">लेखक: तुझं नाव</p>
+        </div>
+    `;
+    body.insertBefore(hero, main);
+
+    const progress = document.createElement('div');
+    progress.className = 'progress-bar';
+    body.insertBefore(progress, main);
+
+    const footerNav = document.createElement('footer');
+    footerNav.className = 'navigation';
+    footerNav.innerHTML = `
+        <a href="../index.html" class="btn-prev">🏠 Home</a>
+        <a href="chapter2.html" class="btn-next">पुढचा ➡️</a>
+    `;
+    body.appendChild(footerNav);
+
+    const siteFooter = document.createElement('footer');
+    siteFooter.innerHTML = '<p>&copy; २०२५ तुझं नाव. सर्व हक्क राखीव.</p>';
+    body.appendChild(siteFooter);
+
+    if (!main.classList.contains('content')) {
+        main.classList.add('content');
+    }
+
+    loadParticles();
 }
 
-// Reading Progress Bar
+function loadParticles() {
+    if (typeof particlesJS !== 'undefined') {
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 30 },
+                color: { value: '#8b4513' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.4 },
+                size: { value: 2, random: true },
+                move: { enable: true, speed: 1 }
+            },
+            interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'repulse' } } }
+        });
+    }
+}
+
+// Progress Bar
 window.addEventListener('scroll', () => {
     const scrollTop = window.pageYOffset;
     const docHeight = document.body.offsetHeight - window.innerHeight;
@@ -33,7 +106,7 @@ function loadChapter(chap) {
         .catch(error => console.error('Error loading chapter:', error));
 }
 
-// Typewriter Effect
+// Typewriter
 function typeWriter(element, text, speed = 50) {
     let i = 0;
     element.innerHTML = '';
@@ -46,11 +119,3 @@ function typeWriter(element, text, speed = 50) {
     }
     type();
 }
-
-// Init
-document.addEventListener('DOMContentLoaded', () => {
-    const teaser = document.querySelector('.teaser');
-    if (teaser) {
-        typeWriter(teaser, teaser.textContent);
-    }
-});
