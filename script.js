@@ -28,22 +28,37 @@ window.addEventListener('scroll', () => {
     document.getElementById('progressBar').style.width = scrolled + '%';
 });
 
-// TOC Populate
+// TOC Populate - Full 18 Chapters
 const chapters = [
-    { title: 'अध्याय १: सुरुवात', link: 'chapters/chapter1.html' },
-    { title: 'अध्याय २: विकास', link: 'chapters/chapter2.html' },
-    // Add more
+    { title: 'अध्याय १: अर्जुनविषादयोग', link: 'chapters/chapter1.html' },
+    { title: 'अध्याय २: साङ्ख्ययोग', link: 'chapters/chapter2.html' },
+    { title: 'अध्याय ३: कर्मयोग', link: 'chapters/chapter3.html' },
+    { title: 'अध्याय ४: ज्ञानकर्मसन्न्यासयोग', link: 'chapters/chapter4.html' },
+    { title: 'अध्याय ५: कर्मसन्न्यासयोग', link: 'chapters/chapter5.html' },
+    { title: 'अध्याय ६: ध्यानयोग', link: 'chapters/chapter6.html' },
+    { title: 'अध्याय ७: ज्ञानविज्ञानयोग', link: 'chapters/chapter7.html' },
+    { title: 'अध्याय ८: अक्षरब्रह्मयोग', link: 'chapters/chapter8.html' },
+    { title: 'अध्याय ९: राजविद्या राजगुह्ययोग', link: 'chapters/chapter9.html' },
+    { title: 'अध्याय १०: विभूति योग', link: 'chapters/chapter10.html' },
+    { title: 'अध्याय ११: विश्वरूपदर्शनयोग', link: 'chapters/chapter11.html' },
+    { title: 'अध्याय १२: भक्तियोग', link: 'chapters/chapter12.html' },
+    { title: 'अध्याय १३: क्षेत्रक्षेत्रज्ञविभागयोग', link: 'chapters/chapter13.html' },
+    { title: 'अध्याय १४: गुणत्रयविभागयोग', link: 'chapters/chapter14.html' },
+    { title: 'अध्याय १५: पुरुषोत्तमयोग', link: 'chapters/chapter15.html' },
+    { title: 'अध्याय १६: दैवासुरसम्पद्विभागयोग', link: 'chapters/chapter16.html' },
+    { title: 'अध्याय १७: श्रद्धात्रयविभागयोग', link: 'chapters/chapter17.html' },
+    { title: 'अध्याय १८: मोक्षसन्न्यासयोग', link: 'chapters/chapter18.html' }
 ];
 
 const tocMenu = document.getElementById('tocMenu');
-chapters.forEach(chapter => {
+chapters.forEach((chapter, index) => {
     const item = document.createElement('div');
     item.classList.add('toc-item');
     item.innerHTML = `<h3>${chapter.title}</h3><a href="${chapter.link}" class="toc-link">वाचा →</a>`;
     tocMenu.appendChild(item);
 });
 
-// Global Search
+// Global Search (Chapters मध्ये highlight)
 const searchInput = document.getElementById('globalSearch');
 const searchBtn = document.getElementById('searchBtn');
 searchBtn.addEventListener('click', performSearch);
@@ -53,11 +68,11 @@ function performSearch() {
     const query = searchInput.value.toLowerCase();
     if (!query) return;
     
-    // For demo: Alert with results (actual ने chapters load करून search कर)
-    alert(`शोधले: "${query}" - Chapter 1 मध्ये matches सापडले! (Full impl: AJAX ने load करून highlight)`);
+    // Alert for demo, actual ने chapters load करून search
+    alert(`शोध: "${query}" - संबंधित अध्याय: कर्मयोग (Chapter ३). Full search साठी chapter open करा.`);
     
-    // Advanced: Highlight in current page
-    const elements = document.querySelectorAll('p, h1, h2, h3');
+    // Highlight in current page
+    const elements = document.querySelectorAll('.shloka, p, h1, h2, h3');
     elements.forEach(el => {
         el.innerHTML = el.innerHTML.replace(new RegExp(`(${query})`, 'gi'), '<span class="highlight">$1</span>');
     });
@@ -65,7 +80,6 @@ function performSearch() {
 
 // Particles & Animations
 document.addEventListener('DOMContentLoaded', () => {
-    // Enhanced particles
     for (let i = 0; i < 30; i++) {
         const particle = document.createElement('div');
         particle.classList.add('particle');
@@ -76,7 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.appendChild(particle);
     }
 
-    // Typewriter for intro (already in CSS, but JS fallback)
     const introText = document.getElementById('introText');
     const fullText = introText.textContent;
     introText.textContent = '';
@@ -88,9 +101,8 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(typeWriter, 50);
         }
     };
-    setTimeout(typeWriter, 3000); // After title
+    setTimeout(typeWriter, 3000);
 
-    // Intersection Observer for fade-in
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -107,14 +119,13 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-    // Parallax
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
         document.getElementById('hero').style.transform = `translateY(${scrolled * 0.5}px)`;
     });
 });
 
-// Chapter Pages: Back Button + Confetti on End
+// Chapter Pages: Back + Confetti
 if (window.location.pathname.includes('chapters/')) {
     const backBtn = document.createElement('button');
     backBtn.textContent = '← होम';
@@ -126,7 +137,6 @@ if (window.location.pathname.includes('chapters/')) {
     backBtn.onclick = () => window.location.href = '../index.html';
     document.body.appendChild(backBtn);
 
-    // Confetti on scroll to bottom (fun!)
     window.addEventListener('scroll', () => {
         if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
             launchConfetti();
