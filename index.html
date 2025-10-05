@@ -3,46 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>तुझं बुक टायटल - लेखकाचे नाव</title>
+    <title>श्रीमद्भगवद्गीता - श्रीकृष्णार्जुन संवाद</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600&family=Noto+Serif+Devanagari:wght@400;500&display=swap" rel="stylesheet">
 </head>
-<body class="light-theme"> <!-- Default light, JS ने toggle -->
+<body class="light-theme">
     <header class="hero" id="hero">
         <nav class="navbar">
-            <div class="logo">📖 तुझं बुक</div>
+            <div class="logo">📖 श्रीमद्भगवद्गीता</div>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#toc">Table of Contents</a></li>
-                <li><a href="chapters/chapter1.html">Chapter 1</a></li>
-                <li><a href="chapters/chapter2.html">Chapter 2</a></li>
-                <!-- Add more -->
+                <!-- JS ने chapters add होईल -->
             </ul>
             <div class="search-container">
-                <input type="text" id="globalSearch" placeholder="शोधा... (keywords)" aria-label="Global Search">
+                <input type="text" id="globalSearch" placeholder="श्लोक शोधा... (उदा. 'कर्मयोग')" aria-label="Global Search">
                 <button id="searchBtn">🔍</button>
             </div>
             <button id="themeToggle" aria-label="Toggle Dark Mode">🌙</button>
             <div class="hamburger" id="hamburger">☰</div>
         </nav>
         <div class="hero-content">
-            <h1 id="heroTitle">तुझं बुक टायटल</h1>
-            <p class="author">लेखक: तुझं नाव</p>
-            <p class="intro" id="introText">हे बुक dynamic webpage वर welcome! Scroll करून chapters explore कर.</p>
-            <button class="cta-btn" onclick="scrollToTOC()">Start Reading</button>
+            <h1 id="heroTitle">श्रीमद्भगवद्गीता</h1>
+            <p class="author">श्रीकृष्ण (महाभारत)</p>
+            <p class="intro" id="introText">अर्जुन आणि श्रीकृष्ण यांच्यातील अमर संवाद. Dynamic webpage वर वाचा, शोधा आणि explore करा. 🙏</p>
+            <button class="cta-btn" onclick="scrollToTOC()">वाचन सुरू करा</button>
         </div>
     </header>
 
     <div class="progress-bar" id="progressBar"></div>
 
     <section id="toc" class="toc-section">
-        <h2>Table of Contents</h2>
+        <h2>अध्याय सूची (Table of Contents)</h2>
         <div class="toc-menu" id="tocMenu">
-            <!-- JS ने populate -->
+            <!-- JS ने populate होईल -->
         </div>
     </section>
 
     <footer>
-        <p>&copy; २०२५ तुझं बुक. All rights reserved.</p>
+        <p>&copy; २०२५ श्रीमद्भगवद्गीता Digital Edition. सर्व हक्क राखीवले. | Powered by xAI Grok</p>
     </footer>
 
     <script src="script.js"></script>
