@@ -1,453 +1,133 @@
-@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600&family=Noto+Serif+Devanagari:wght@400;500&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* Noto Sans Devanagari फॉन्ट वापरत आहोत (Mukta वापरू शकतो, पण Noto जास्त Universal आहे) */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700&display=swap');
 
 :root {
-    --bg-primary: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); /* Deep blue serene */
-    --text-primary: #f4e8c1; /* Warm off-white */
-    --card-bg: rgba(255, 255, 255, 0.1);
-    --border: rgba(255, 193, 7, 0.3); /* Saffron tint */
-    --glow: #ffc107; /* Golden saffron */
-    --accent: #ff9800; /* Saffron */
-}
-
-.dark-theme {
-    --bg-primary: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
-    --text-primary: #f4e8c1;
-    --card-bg: rgba(0, 0, 0, 0.6);
-    --border: rgba(255, 193, 7, 0.2);
-    --glow: #ffc107;
-    --accent: #ff9800;
+    --primary-color: #ffc107; /* Golden Yellow */
+    --secondary-color: #6a1b9a; /* Deep Purple */
+    --background-dark: #121212; /* Dark Background */
+    --glass-background: rgba(255, 255, 255, 0.1); /* Lighter Glass effect */
 }
 
 body {
-    font-family: 'Noto Serif Devanagari', serif;
-    line-height: 1.8;
-    color: var(--text-primary);
-    background: var(--bg-primary);
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    background-color: var(--background-dark);
+    color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    /* Optional: हलक्या golden particles साठी background-image जोडा */
+    background-image: radial-gradient(circle at top left, var(--secondary-color) 0%, transparent 20%), 
+                      radial-gradient(circle at bottom right, rgba(255, 193, 7, 0.1) 0%, transparent 30%);
     min-height: 100vh;
-    overflow-x: hidden;
-    transition: all 0.4s ease;
 }
 
-.hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background: url('assets/krishna-bg.jpg') center/cover; /* Lotus/Krishna serene image add कर */
-    background-attachment: fixed;
-    position: relative;
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.3); /* Soft overlay */
-}
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    backdrop-filter: blur(15px);
-    background: var(--card-bg);
-    border-bottom: 1px solid var(--border);
-    z-index: 10;
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: var(--text-primary);
-    text-shadow: 0 0 5px var(--glow);
-}
-
-.nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-}
-
-.nav-menu a {
-    color: var(--text-primary);
-    text-decoration: none;
-    transition: all 0.3s ease;
-    font-weight: 400;
-}
-
-.nav-menu a:hover {
-    color: var(--accent);
-    text-shadow: 0 0 8px var(--glow);
-}
-
-.search-container {
-    display: flex;
-    gap: 0.5rem;
-}
-
-#globalSearch {
-    padding: 0.5rem 1rem;
-    border: 1px solid var(--border);
-    border-radius: 25px;
-    background: var(--card-bg);
-    color: var(--text-primary);
-    width: 200px;
-    font-family: inherit;
-}
-
-#searchBtn {
-    padding: 0.5rem;
-    background: var(--accent);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    color: white;
-}
-
-#searchBtn:hover {
-    box-shadow: 0 0 10px var(--glow);
-    transform: scale(1.1);
-}
-
-#themeToggle {
-    padding: 0.5rem;
-    background: none;
-    border: 1px solid var(--border);
-    border-radius: 50%;
-    color: var(--text-primary);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 1.2rem;
-}
-
-#themeToggle:hover {
-    background: var(--accent);
-    color: white;
-}
-
-.hamburger {
-    display: none;
-    font-size: 2rem;
-    color: var(--text-primary);
-    cursor: pointer;
-}
-
-.hero-content {
-    text-align: center;
-    color: var(--text-primary);
-    z-index: 1;
-    padding: 0 2rem;
-}
-
-.hero-content h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-    font-weight: 500;
-    animation: fadeInUp 1s ease;
-}
-
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.author {
-    font-size: 1.3rem;
-    opacity: 0.9;
-    margin-bottom: 1rem;
-    font-style: italic;
-}
-
-.intro {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-    animation: fadeInUp 1.5s ease;
-}
-
-.cta-btn {
-    padding: 1rem 2.5rem;
-    font-size: 1.2rem;
-    background: linear-gradient(45deg, var(--accent), var(--glow));
-    border: none;
-    color: #1e3c72;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-    border-radius: 30px;
-    font-weight: 500;
-}
-
-.cta-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 20px rgba(255, 193, 7, 0.4);
-}
-
-.progress-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent), var(--glow));
-    z-index: 100;
-    transition: width 0.3s ease;
-}
-
-.toc-section {
-    padding: 4rem 2rem;
-    background: var(--card-bg);
-    backdrop-filter: blur(20px);
-    margin-top: -80px;
-}
-
-.toc-section h2 {
-    text-align: center;
-    margin-bottom: 2rem;
-    color: var(--text-primary);
-    font-size: 2rem;
-}
-
-.toc-menu {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.toc-item {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 1.5rem;
+/* ------------------ लिक्विड ग्लास (Glassmorphism) इफेक्ट ------------------ */
+.glass-blur-card {
+    background: var(--glass-background);
+    backdrop-filter: blur(10px); /* मुख्य Glass Effect */
+    -webkit-backdrop-filter: blur(10px);
     border-radius: 15px;
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--border);
-    transition: all 0.4s ease;
-    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    padding: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-blur-card:hover {
+    transform: translateY(-5px); /* Hover effect */
+    box-shadow: 0 12px 40px 0 rgba(255, 193, 7, 0.2), 0 0 15px rgba(255, 193, 7, 0.5); /* Golden Glow on hover */
+}
+
+/* ------------------ Header आणि Title ------------------ */
+.main-header {
+    text-align: center;
+    padding: 80px 20px 40px;
+    background: linear-gradient(180deg, var(--background-dark), rgba(18, 18, 18, 0.8));
+}
+
+.main-header h1 {
+    font-size: 3.5em;
+    color: var(--primary-color);
+    text-shadow: 0 0 10px rgba(255, 193, 7, 0.7); /* Title Glow */
+    margin-bottom: 0.1em;
+}
+
+.main-header h2 {
+    font-size: 1.2em;
+    font-weight: 400;
+    color: #aaa;
+    margin-top: 0;
+}
+
+.author-name {
+    font-style: italic;
+    color: #999;
+}
+
+/* ------------------ TOC Container आणि Grid ------------------ */
+.toc-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.intro-card {
+    margin-bottom: 40px;
     text-align: center;
 }
 
-.toc-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    border-color: var(--accent);
+.chapters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
 }
 
-.toc-item h3 {
-    color: var(--accent);
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
-}
-
-.toc-link {
-    color: var(--text-primary);
+/* ------------------ Chapter Card Style ------------------ */
+.chapter-card {
     text-decoration: none;
-    font-weight: 400;
-}
-
-.toc-link:hover {
-    color: var(--accent);
-}
-
-footer {
-    text-align: center;
-    padding: 2rem;
-    color: var(--text-primary);
-    background: var(--card-bg);
-    border-top: 1px solid var(--border);
-    font-size: 0.9rem;
-}
-
-/* Chapter Styles - Serene */
-.chapter-content {
-    max-width: 900px;
-    margin: 2rem auto;
-    padding: 3rem;
-    background: var(--card-bg);
-    backdrop-filter: blur(20px);
-    border-radius: 20px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-    line-height: 2;
-}
-
-.chapter-content h1 {
-    text-align: center;
-    color: var(--accent);
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    text-shadow: 0 2px 5px rgba(0,0,0,0.3);
-}
-
-.chapter-content h2, h3 {
-    color: var(--text-primary);
-    margin: 2rem 0 1rem;
-    font-weight: 400;
-}
-
-.chapter-content p {
-    margin-bottom: 1.5rem;
-    text-align: justify;
-    font-size: 1.1rem;
-}
-
-.shloka {
-    background: rgba(255, 193, 7, 0.05);
-    border-left: 4px solid var(--accent);
-    padding: 1.5rem;
-    margin: 1.5rem 0;
-    border-radius: 8px;
-    font-size: 1.2rem;
-    line-height: 2.2;
-    quotes: "॥" "॥" "।" "।";
-    position: relative;
-}
-
-.shloka::before {
-    content: '॥';
-    font-size: 1.5rem;
-    color: var(--accent);
-    position: absolute;
-    left: 1rem;
-    top: 1rem;
-}
-
-.shloka::after {
-    content: '॥';
-    font-size: 1.5rem;
-    color: var(--accent);
-    position: absolute;
-    right: 1rem;
-    bottom: 1rem;
-}
-
-.next-btn {
-    background: linear-gradient(45deg, var(--accent), var(--glow));
-    color: #1e3c72;
-    border: none;
-    padding: 1rem 2rem;
-    border-radius: 30px;
-    cursor: pointer;
-    margin: 3rem auto;
     display: block;
-    font-size: 1.1rem;
-    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 50px; /* Space for chapter number */
+}
+
+.chapter-card h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    font-size: 1.5em;
+}
+
+.chapter-card p {
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.chapter-number {
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+    font-size: 3em;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.1); /* Very light, submerged number */
+    line-height: 1;
+}
+
+/* ------------------ Glow Button Effect ------------------ */
+.read-button {
+    background: var(--primary-color);
+    color: var(--background-dark);
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(255, 193, 7, 0.5);
     transition: all 0.3s ease;
 }
 
-.next-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
-}
-
-.audio-container {
-    text-align: center;
-    margin: 2rem 0;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-}
-
-.audio-container a {
-    color: var(--accent);
-    text-decoration: none;
-}
-
-.audio-container a:hover {
-    text-shadow: 0 0 5px var(--glow);
-}
-
-.highlight {
-    background: rgba(255, 193, 7, 0.3);
-    padding: 2px 5px;
-    border-radius: 3px;
-    font-weight: 500;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-    .nav-menu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: var(--card-bg);
-        flex-direction: column;
-        padding: 1rem;
-        border-top: 1px solid var(--border);
-    }
-
-    .nav-menu.active {
-        display: flex;
-    }
-
-    .hamburger {
-        display: block;
-    }
-
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-
-    #globalSearch {
-        width: 150px;
-    }
-
-    .chapter-content {
-        padding: 1.5rem;
-        margin: 1rem;
-    }
-
-    .shloka {
-        font-size: 1rem;
-        padding: 1rem;
-    }
-}
-
-/* Subtle Lotus Particles */
-@keyframes floatLotus {
-    0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
-    50% { transform: translateY(-15px) rotate(180deg); opacity: 1; }
-}
-
-.particle {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    background: radial-gradient(circle, var(--accent), transparent);
-    border-radius: 50%;
-    animation: floatLotus 8s ease-in-out infinite;
-}
-
-.confetti {
-    position: fixed;
-    width: 8px;
-    height: 8px;
-    background: radial-gradient(circle, var(--accent), var(--glow));
-    pointer-events: none;
-    z-index: 1000;
-    animation: confetti-fall 4s linear infinite;
-}
-
-@keyframes confetti-fall {
-    0% { transform: translateY(-100vh) rotate(0deg); }
-    100% { transform: translateY(100vh) rotate(360deg); }
+.read-button:hover {
+    background: #ffd740;
+    box-shadow: 0 8px 25px rgba(255, 193, 7, 0.7);
+    transform: scale(1.05);
 }
