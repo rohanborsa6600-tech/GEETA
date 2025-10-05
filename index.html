@@ -3,55 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>श्री मद भगवत गीता-श्री देवदत्त आश्रम,जाधववाडी </title>
+    <title>तुझं बुक टायटल - लेखकाचे नाव</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
-<body>
-    <header class="hero">
+<body class="light-theme"> <!-- Default light, JS ने toggle -->
+    <header class="hero" id="hero">
         <nav class="navbar">
-            <div class="logo">📖श्री मद भगवत गीता </div>
+            <div class="logo">📖 तुझं बुक</div>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#toc">Table of Contents</a></li>
                 <li><a href="chapters/chapter1.html">Chapter 1</a></li>
                 <li><a href="chapters/chapter2.html">Chapter 2</a></li>
-                <li><a href="chapters/chapter3.html">Chapter 3</a></li>
-                <li><a href="chapters/chapter4.html">Chapter 4</a></li>
-                <li><a href="chapters/chapter5.html">Chapter 5</a></li>
-                <li><a href="chapters/chapter6.html">Chapter 6</a></li>
-                <li><a href="chapters/chapter7.html">Chapter 7</a></li>
-                <li><a href="chapters/chapter8.html">Chapter 8</a></li>
-                <li><a href="chapters/chapter9.html">Chapter 9</a></li>
-                <li><a href="chapters/chapter10.html">Chapter 10</a></li>
-                <li><a href="chapters/chapter11.html">Chapter 11</a></li>
-                <li><a href="chapters/chapter12.html">Chapter 12</a></li>
-                <li><a href="chapters/chapter13.html">Chapter 13</a></li>
-                <li><a href="chapters/chapter14.html">Chapter 14</a></li>
-                <li><a href="chapters/chapter15.html">Chapter 15</a></li>
-                <li><a href="chapters/chapter16.html">Chapter 16</a></li>
-                <li><a href="chapters/chapter17.html">Chapter 17</a></li>
-                <li><a href="chapters/chapter18.html">Chapter 18</a></li>
-                <!-- Add more chapters here -->
+                <!-- Add more -->
             </ul>
+            <div class="search-container">
+                <input type="text" id="globalSearch" placeholder="शोधा... (keywords)" aria-label="Global Search">
+                <button id="searchBtn">🔍</button>
+            </div>
+            <button id="themeToggle" aria-label="Toggle Dark Mode">🌙</button>
             <div class="hamburger" id="hamburger">☰</div>
         </nav>
         <div class="hero-content">
-            <h1>श्री मद भगवत गीता</h1>
-            <p class="author">लेखक: श्री देवदत्त आश्रम </p>
-            <p class="intro">ADX</p>
+            <h1 id="heroTitle">तुझं बुक टायटल</h1>
+            <p class="author">लेखक: तुझं नाव</p>
+            <p class="intro" id="introText">हे बुक dynamic webpage वर welcome! Scroll करून chapters explore कर.</p>
             <button class="cta-btn" onclick="scrollToTOC()">Start Reading</button>
         </div>
     </header>
 
+    <div class="progress-bar" id="progressBar"></div>
+
     <section id="toc" class="toc-section">
         <h2>Table of Contents</h2>
         <div class="toc-menu" id="tocMenu">
-            <!-- JS ने populate होईल -->
+            <!-- JS ने populate -->
         </div>
     </section>
 
     <footer>
-        <p>&copy; २०२५ श्री मद भगवत गीता-श्री देवदत्त आश्रम,जाधववाडी . All rights reserved.</p>
+        <p>&copy; २०२५ तुझं बुक. All rights reserved.</p>
     </footer>
 
     <script src="script.js"></script>
